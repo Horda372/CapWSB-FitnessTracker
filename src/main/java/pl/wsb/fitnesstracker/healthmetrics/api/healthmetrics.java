@@ -23,10 +23,9 @@ public class healthmetrics {
     @Nullable
     private Long id;
 
-
     @ManyToOne
     @JoinColumn(name = "user_id", nullable=false)
-    private User userID;
+    private User user_id;
 
     @Column(name = "date", nullable = false)
     private LocalDate date;
