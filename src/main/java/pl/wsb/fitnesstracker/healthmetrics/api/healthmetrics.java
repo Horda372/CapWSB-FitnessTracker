@@ -12,11 +12,11 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Entity
-@Table(name = "Healthmetrics")
+@Table(name = "health_metrics")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @ToString
-public class healthmetrics {
+public class Healthmetrics {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,10 +39,4 @@ public class healthmetrics {
     @Column(name = "heartRate", nullable = false)
     private int heartRate;
 
-    public healthmetrics(int weight, int height, int heartRate, LocalDate date) {
-        this.date = date;
-        this.weight = weight;
-        this.height = height;
-        this.heartRate = heartRate;
-    }
 }
