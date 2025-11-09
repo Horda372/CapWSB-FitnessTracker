@@ -1,4 +1,6 @@
-package pl.wsb.fitnesstracker.statistics.api;
+package pl.wsb.fitnesstracker.healthmetrics.api;
+
+import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
 
 import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
@@ -8,29 +10,34 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Entity
-@Table(name = "Statistics")
+@Table(name = "Healthmetrics")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @ToString
-public class Statistics {
+public class healthmetrics {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Nullable
     private Long id;
 
-    @Column(name = "total_trainings", nullable = false)
-    private int totalTrainings;
 
-    @Column(name = "total_distance")
-    private double totalDistance;
+    @OneToMany(mappedBy="user_id")
+    @JoinColumn(name = "user_id", nullable=false)
+    private User userID;
 
-    @Column(name = "total_calories_burned")
-    private int totalCaloriesBurned;
+    @Column(name = "weight", nullable = false)
+    private int weight;
 
-    public Statistics(int totalTrainings, double totalDistance, int totalCaloriesBurned) {
-        this.totalTrainings = totalTrainings;
-        this.totalDistance = totalDistance;
-        this.totalCaloriesBurned = totalCaloriesBurned;
+    @Column(name = "height", nullable = false)
+    private int height;
+
+    @Column(name = "heartRate", nullable = false)
+    private int heartRate;
+
+    public healthmetrics(int weight, int height, int heartRate) {
+        this.weight = weight;
+        this.height = height;
+        this.heartRate = heartRate;
     }
 }
