@@ -22,7 +22,7 @@ public class healthmetrics {
     private Long id;
 
 
-    @OneToMany(mappedBy="user_id")
+    @ManyToOne
     @JoinColumn(name = "user_id", nullable=false)
     private User userID;
 

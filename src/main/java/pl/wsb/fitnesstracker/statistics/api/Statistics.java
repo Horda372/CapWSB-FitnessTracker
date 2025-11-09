@@ -1,5 +1,7 @@
 package pl.wsb.fitnesstracker.statistics.api;
 
+import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
+
 import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -18,6 +20,10 @@ public class Statistics {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Nullable
     private Long id;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private User userID;
 
     @Column(name = "total_trainings", nullable = false)
     private int totalTrainings;
