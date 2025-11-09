@@ -2,7 +2,6 @@ package pl.wsb.fitnesstracker.healthmetrics.api;
 
 import java.time.LocalDate;
 
-import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
 
 import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
@@ -10,6 +9,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import pl.wsb.fitnesstracker.user.api.User;
 
 @Entity
 @Table(name = "health_metrics")
