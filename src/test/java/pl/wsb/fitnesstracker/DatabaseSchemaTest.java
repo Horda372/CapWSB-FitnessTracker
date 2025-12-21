@@ -15,6 +15,9 @@ import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+/**
+ * The type Database schema test.
+ */
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.ANY)
 class DatabaseSchemaTest {
@@ -22,6 +25,11 @@ class DatabaseSchemaTest {
     @Autowired
     private DataSource dataSource;
 
+    /**
+     * Should have event table.
+     *
+     * @throws Exception the exception
+     */
     @Test
     void shouldHaveEventTable() throws Exception {
         try (Connection conn = dataSource.getConnection()) {
@@ -29,6 +37,11 @@ class DatabaseSchemaTest {
         }
     }
 
+    /**
+     * Should have health metrics table.
+     *
+     * @throws Exception the exception
+     */
     @Test
     void shouldHaveHealthMetricsTable() throws Exception {
         try (Connection conn = dataSource.getConnection()) {
@@ -36,6 +49,11 @@ class DatabaseSchemaTest {
         }
     }
 
+    /**
+     * Should have statistics table.
+     *
+     * @throws Exception the exception
+     */
     @Test
     void shouldHaveStatisticsTable() throws Exception {
         try (Connection conn = dataSource.getConnection()) {
@@ -43,6 +61,11 @@ class DatabaseSchemaTest {
         }
     }
 
+    /**
+     * Should have trainings table.
+     *
+     * @throws Exception the exception
+     */
     @Test
     void shouldHaveTrainingsTable() throws Exception {
         try (Connection conn = dataSource.getConnection()) {
@@ -50,6 +73,11 @@ class DatabaseSchemaTest {
         }
     }
 
+    /**
+     * Should have user event table.
+     *
+     * @throws Exception the exception
+     */
     @Test
     void shouldHaveUserEventTable() throws Exception {
         try (Connection conn = dataSource.getConnection()) {
@@ -57,6 +85,11 @@ class DatabaseSchemaTest {
         }
     }
 
+    /**
+     * Should have users table.
+     *
+     * @throws Exception the exception
+     */
     @Test
     void shouldHaveUsersTable() throws Exception {
         try (Connection conn = dataSource.getConnection()) {
@@ -64,6 +97,11 @@ class DatabaseSchemaTest {
         }
     }
 
+    /**
+     * Should have workout session table.
+     *
+     * @throws Exception the exception
+     */
     @Test
     void shouldHaveWorkoutSessionTable() throws Exception {
         try (Connection conn = dataSource.getConnection()) {
@@ -71,6 +109,11 @@ class DatabaseSchemaTest {
         }
     }
 
+    /**
+     * Event table has expected columns.
+     *
+     * @throws Exception the exception
+     */
     @Test
     void eventTableHasExpectedColumns() throws Exception {
         try (Connection conn = dataSource.getConnection()) {
@@ -80,6 +123,11 @@ class DatabaseSchemaTest {
     }
 
 
+    /**
+     * Health metrics table has expected columns.
+     *
+     * @throws Exception the exception
+     */
     @Test
     void healthMetricsTableHasExpectedColumns() throws Exception {
         try (Connection conn = dataSource.getConnection()) {
@@ -88,6 +136,11 @@ class DatabaseSchemaTest {
         }
     }
 
+    /**
+     * Statistics table has expected columns.
+     *
+     * @throws Exception the exception
+     */
     @Test
     void statisticsTableHasExpectedColumns() throws Exception {
         try (Connection conn = dataSource.getConnection()) {
@@ -96,6 +149,11 @@ class DatabaseSchemaTest {
         }
     }
 
+    /**
+     * Trainings table has expected columns.
+     *
+     * @throws Exception the exception
+     */
     @Test
     void trainingsTableHasExpectedColumns() throws Exception {
         try (Connection conn = dataSource.getConnection()) {
@@ -104,6 +162,11 @@ class DatabaseSchemaTest {
         }
     }
 
+    /**
+     * User event table has expected columns.
+     *
+     * @throws Exception the exception
+     */
     @Test
     void userEventTableHasExpectedColumns() throws Exception {
         try (Connection conn = dataSource.getConnection()) {
@@ -112,6 +175,11 @@ class DatabaseSchemaTest {
         }
     }
 
+    /**
+     * Users table has expected columns.
+     *
+     * @throws Exception the exception
+     */
     @Test
     void usersTableHasExpectedColumns() throws Exception {
         try (Connection conn = dataSource.getConnection()) {
@@ -120,6 +188,11 @@ class DatabaseSchemaTest {
         }
     }
 
+    /**
+     * Workout session table has expected columns.
+     *
+     * @throws Exception the exception
+     */
     @Test
     void workoutSessionTableHasExpectedColumns() throws Exception {
         try (Connection conn = dataSource.getConnection()) {

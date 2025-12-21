@@ -3,6 +3,9 @@ package pl.wsb.fitnesstracker.user.api;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * The interface User provider.
+ */
 public interface UserProvider {
 
     /**

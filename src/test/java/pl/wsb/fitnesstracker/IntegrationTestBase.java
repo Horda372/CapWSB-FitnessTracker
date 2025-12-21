@@ -11,6 +11,9 @@ import pl.wsb.fitnesstracker.user.api.User;
 
 import java.util.List;
 
+/**
+ * The type Integration test base.
+ */
 @SpringBootTest
 @AutoConfigureMockMvc
 public abstract class IntegrationTestBase {
@@ -21,6 +24,9 @@ public abstract class IntegrationTestBase {
     @Autowired
     private JpaRepository<Training, Long> trainingRepository;
 
+    /**
+     * Clean up.
+     */
     @AfterEach
     void cleanUp() {
         cleanDatabase();
@@ -32,6 +38,9 @@ public abstract class IntegrationTestBase {
         userRepository.deleteAll();
     }
 
+    /**
+     * Sets up.
+     */
     @BeforeEach
     public void setUp() {
 
@@ -39,25 +48,53 @@ public abstract class IntegrationTestBase {
 
     }
 
+    /**
+     * Persist training training.
+     *
+     * @param training the training
+     * @return the training
+     */
     protected Training persistTraining(Training training) {
         return trainingRepository.save(training);
     }
 
+    /**
+     * Existing user user.
+     *
+     * @param user the user
+     * @return the user
+     */
     protected User existingUser(User user) {
 
         return userRepository.save(user);
     }
 
+    /**
+     * Gets all users.
+     *
+     * @return the all users
+     */
     protected List<User> getAllUsers() {
         return userRepository.findAll();
     }
 
+    /**
+     * Create all trainings list.
+     *
+     * @param trainings the trainings
+     * @return the list
+     */
     protected List<Training> createAllTrainings(List<Training> trainings) {
 
         trainings.forEach(training -> trainingRepository.save(training));
         return trainings;
     }
 
+    /**
+     * Gets all trainings.
+     *
+     * @return the all trainings
+     */
     protected List<Training> getAllTrainings() {
         return trainingRepository.findAll();
     }

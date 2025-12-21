@@ -10,6 +10,9 @@ import pl.wsb.fitnesstracker.user.api.UserService;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * The type User service.
+ */
 @Service
 @RequiredArgsConstructor
 @Slf4j

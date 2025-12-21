@@ -9,6 +9,9 @@ import lombok.ToString;
 
 import java.time.LocalDate;
 
+/**
+ * The type User.
+ */
 @Entity
 @Table(name = "users")
 @Getter
@@ -33,6 +36,14 @@ public class User {
     @Column(nullable = false, unique = true)
     private String email;
 
+    /**
+     * Instantiates a new User.
+     *
+     * @param firstName the first name
+     * @param lastName  the last name
+     * @param birthdate the birthdate
+     * @param email     the email
+     */
     public User(
             final String firstName,
             final String lastName,
