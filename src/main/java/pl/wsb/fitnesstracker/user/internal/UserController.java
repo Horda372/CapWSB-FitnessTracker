@@ -14,8 +14,12 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/v1/users")
-@RequiredArgsConstructor
 class UserController {
+
+    public UserController(UserServiceImpl userService, UserMapper userMapper) {
+        this.userService = userService;
+        this.userMapper = userMapper;
+    }
 
     private final UserServiceImpl userService;
 

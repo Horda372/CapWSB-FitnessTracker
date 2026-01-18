@@ -29,8 +29,12 @@ import static java.util.Objects.isNull;
 @Profile("loadInitialData")
 @Slf4j
 @ToString
-@RequiredArgsConstructor
 class InitialDataLoader {
+
+    public InitialDataLoader(JpaRepository<User, Long> userRepository, JpaRepository<Training, Long> trainingRepository) {
+        this.userRepository = userRepository;
+        this.trainingRepository = trainingRepository;
+    }
 
     private final JpaRepository<User, Long> userRepository;
 
@@ -42,13 +46,10 @@ class InitialDataLoader {
     public void loadInitialData(ContextRefreshedEvent event) {
         verifyDependenciesAutowired();
 
-        log.info("Loading initial data to the database");
 
         List<User> sampleUserList = generateSampleUsers();
         List<Training> sampleTrainingList = generateTrainingData(sampleUserList);
 
-
-        log.info("Finished loading initial data");
     }
 
     private User generateUser(String name, String lastName, int age) {
@@ -72,6 +73,7 @@ class InitialDataLoader {
         users.add(generateUser("Noah", "Miller", 39));
         users.add(generateUser("Grace", "Anderson", 33));
         users.add(generateUser("Oliver", "Swift", 29));
+        users.add(generateUser("Mikołaj", "Święty", 69));
 
         return users;
     }
@@ -142,6 +144,12 @@ class InitialDataLoader {
                     ActivityType.RUNNING,
                     11.8,
                     8.5);
+            Training training11 = new Training(users.get(10),
+                    sdf.parse("2024-12-24 23:00:00"),
+                    sdf.parse("2024-12-24 23:15:00"),
+                    ActivityType.SWIMMING,
+                    365,
+                    999);
 
             trainingData.add(training1);
             trainingData.add(training2);
@@ -153,6 +161,7 @@ class InitialDataLoader {
             trainingData.add(training8);
             trainingData.add(training9);
             trainingData.add(training10);
+            trainingData.add(training11);
 
             trainingRepository.saveAll(trainingData);
         } catch (ParseException e) {
