@@ -22,6 +22,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+/**
+ * The type User api integration test.
+ */
 @IntegrationTest
 @Transactional
 @AutoConfigureMockMvc(addFilters = false)
@@ -30,6 +33,11 @@ class UserApiIntegrationTest extends IntegrationTestBase {
     @Autowired
     private MockMvc mockMvc;
 
+    /**
+     * Generate user user.
+     *
+     * @return the user
+     */
     public static User generateUser() {
         return new User(randomUUID().toString(), randomUUID().toString(), LocalDate.now(), randomUUID().toString());
     }
@@ -38,6 +46,11 @@ class UserApiIntegrationTest extends IntegrationTestBase {
         return new User(randomUUID().toString(), randomUUID().toString(), date, randomUUID().toString());
     }
 
+    /**
+     * Should return all users when getting all users.
+     *
+     * @throws Exception the exception
+     */
     @Test
     void shouldReturnAllUsers_whenGettingAllUsers() throws Exception {
         User user1 = existingUser(generateUser());
@@ -58,6 +71,11 @@ class UserApiIntegrationTest extends IntegrationTestBase {
                 .andExpect(jsonPath("$[2]").doesNotExist());
     }
 
+    /**
+     * Should return all simple users when getting all users.
+     *
+     * @throws Exception the exception
+     */
     @Test
     void shouldReturnAllSimpleUsers_whenGettingAllUsers() throws Exception {
         User user1 = existingUser(generateUser());
@@ -76,6 +94,11 @@ class UserApiIntegrationTest extends IntegrationTestBase {
                 .andExpect(jsonPath("$[2]").doesNotExist());
     }
 
+    /**
+     * Should return details about user when getting user by id.
+     *
+     * @throws Exception the exception
+     */
     @Test
     void shouldReturnDetailsAboutUser_whenGettingUserById() throws Exception {
         User user1 = existingUser(generateUser());
@@ -91,6 +114,11 @@ class UserApiIntegrationTest extends IntegrationTestBase {
 
     }
 
+    /**
+     * Should return details about user when getting user by email.
+     *
+     * @throws Exception the exception
+     */
     @Test
     void shouldReturnDetailsAboutUser_whenGettingUserByEmail() throws Exception {
         User user1 = existingUser(generateUser());
@@ -103,6 +131,11 @@ class UserApiIntegrationTest extends IntegrationTestBase {
                 .andExpect(jsonPath("$[0].email").value(user1.getEmail()));
     }
 
+    /**
+     * Should return all users older than when getting all users older than.
+     *
+     * @throws Exception the exception
+     */
     @Test
     void shouldReturnAllUsersOlderThan_whenGettingAllUsersOlderThan() throws Exception {
         User user1 = existingUser(generateUserWithDate(LocalDate.of(2000, 8, 11)));
@@ -120,6 +153,11 @@ class UserApiIntegrationTest extends IntegrationTestBase {
                 .andExpect(jsonPath("$[1]").doesNotExist());
     }
 
+    /**
+     * Should remove user from repository when deleting client.
+     *
+     * @throws Exception the exception
+     */
     @Test
     void shouldRemoveUserFromRepository_whenDeletingClient() throws Exception {
         User user1 = existingUser(generateUser());
@@ -135,6 +173,11 @@ class UserApiIntegrationTest extends IntegrationTestBase {
 
     }
 
+    /**
+     * Should persist user when creating user.
+     *
+     * @throws Exception the exception
+     */
     @Test
     void shouldPersistUser_whenCreatingUser() throws Exception {
 
@@ -174,6 +217,11 @@ class UserApiIntegrationTest extends IntegrationTestBase {
 
     }
 
+    /**
+     * Should update user when updating user.
+     *
+     * @throws Exception the exception
+     */
     @Test
     void shouldUpdateUser_whenUpdatingUser() throws Exception {
         User user1 = existingUser(generateUser());

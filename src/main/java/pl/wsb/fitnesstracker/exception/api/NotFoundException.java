@@ -10,6 +10,11 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ResponseStatus(HttpStatus.NOT_FOUND)
 public class NotFoundException extends BusinessException {
 
+    /**
+     * Instantiates a new Not found exception.
+     *
+     * @param message the message
+     */
     public NotFoundException(String message) {
         super(message);
     }

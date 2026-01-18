@@ -8,6 +8,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import pl.wsb.fitnesstracker.user.api.User;
 
+/**
+ * The type User event.
+ */
 @Entity
 @Table(name = "user_event",
         uniqueConstraints = @UniqueConstraint(columnNames = {"user_id", "event_id"}))

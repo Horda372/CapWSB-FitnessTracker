@@ -8,6 +8,9 @@ import pl.wsb.fitnesstracker.training.api.Training;
 
 import java.time.LocalDateTime;
 
+/**
+ * The type Workout session.
+ */
 @Entity
 @Table(name = "workout_session")
 @Getter

@@ -25,6 +25,11 @@ class UserController {
 
     private final UserMapper userMapper;
 
+    /**
+     * Gets all users.
+     *
+     * @return the all users
+     */
     @GetMapping
     public List<UserDto> getAllUsers() {
         return userService.findAllUsers()

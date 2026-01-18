@@ -7,6 +7,9 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
+/**
+ * The type Event. That class represents Entity Event which provide information about ...
+ */
 @Entity
 @Table(name = "event")
 @Getter
